@@ -1,24 +1,42 @@
-<div class="formContainer">
 <form [formGroup]="formModel"  (ngSubmit)="onSearch()" novalidate>
-    <div class="form-group">
-        <label for="fromItem">收入来源:</label>
-        <select id="fromItem" class="form-control">
-          <option *ngFor="let inputItem of inputList" [value]="inputItem.itemName">{{inputItem.itemName}}</option>
-        </select>
-      </div>
-    <div class="form-group" [class.has-error]="formModel.hasError('positiveNum','tranAccount')">
-      <label for="tranAccount">转账金额:</label>
-      <input formControlName="tranAccount" type="number" id="tranAccount" placeholder="输入金额..." class="form-control">
-      <span class="help-bock" [class.hidden]="!formModel.hasError('positiveNum','tranAccount')">请输入正数!</span>
-    </div>
-    <div class="form-group">
-      <label for="toItem">目的账户:</label>
-      <select id="toItem" class="form-control">
-        <option *ngFor="let propItem of propertyList" [value]="propItem.itemName">{{propItem.itemName}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-default btn-block">提交</button>
-    </div>
-  </form>
-</div>
+    <table class="table">
+      <caption>收入流录入</caption>
+      <thead>
+        <tr>
+          <th>收入来源</th>
+          <th>转账金额</th>
+          <th>目的账户</th>
+          <th>目的账户</th>
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+          <td>
+            <div class="form-group">
+              <select id="fromItem" class="form-control">
+                <option *ngFor="let inputItem of inputList" [value]="inputItem.itemName">{{inputItem.itemName}}</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <div class="form-group" [class.has-error]="formModel.hasError('positiveNum','tranAccount')">
+              <input formControlName="tranAccount" type="number" id="tranAccount" placeholder="输入金额..." class="form-control">
+              <span class="help-bock" [class.hidden]="!formModel.hasError('positiveNum','tranAccount')">请输入正数!</span>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <select id="toItem" class="form-control">
+                <option *ngFor="let propItem of propertyList" [value]="propItem.itemName">{{propItem.itemName}}</option>
+              </select>
+              </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-block">提交</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</form>
