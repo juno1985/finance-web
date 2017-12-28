@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.homeContainer{
+
+    background-color: rgb(235, 235, 243);
+    width: 1024px;
+    margin-left: 300px;
+    margin-top: 80px;
+  
+}

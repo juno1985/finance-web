@@ -9,8 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { ProInputComponent } from './pro-input/pro-input.component';
 import { ItemService } from './shared/item.service';
 import {Http,HttpModule} from '@angular/http';
+import { HomeInputComponent } from './home-input/home-input.component';
 const routeConfig: Routes =[
-   {path:'', component:HomeComponent}
+   {path:'', component:HomeComponent},
+   {path:'input',component:HomeInputComponent}
  ]
 
 @NgModule({
@@ -19,7 +21,8 @@ const routeConfig: Routes =[
     HeaderComponent,
     NavBarComponent,
     HomeComponent,
-    ProInputComponent
+    ProInputComponent,
+    HomeInputComponent
   ],
   imports: [
     FormsModule,
