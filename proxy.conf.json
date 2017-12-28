@@ -1,0 +1,5 @@
+{
+    "/finance-api":{
+        "target":"http://localhost:8002"
+    }
+}

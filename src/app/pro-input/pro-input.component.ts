@@ -1,4 +1,4 @@
-import { ItemService } from './../shared/item.service';
+import { ItemService,InputItem,PropertyItem,InputFlow } from './../shared/item.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl } from '@angular/forms';
 
@@ -12,8 +12,11 @@ export class ProInputComponent implements OnInit {
 
 
   formModel:FormGroup;
+  inputList: InputItem[];
+  propertyList: PropertyItem[];
+  inputFlow:InputFlow;
 
-  constructor() { 
+  constructor(private itemService:ItemService) { 
     let fb = new FormBuilder();
     this.formModel=fb.group({
       //默认空，验证是否是正数
@@ -23,6 +26,12 @@ export class ProInputComponent implements OnInit {
 
   ngOnInit() {
     /** 这里需要使用item.service得到服务端数据填充下拉菜单*/
+    this.itemService.getInputFlow().subscribe(
+     inputFlow => { 
+       this.inputList = inputFlow.fromList;
+       this.propertyList = inputFlow.toList;
+     }
+    );
   }
 
   positiveNumberValidator(control:FormControl):any{
