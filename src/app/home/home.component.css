@@ -1,8 +1,5 @@
-.contentDiv{
-    position: fixed;
-    background-color: blue;
-    margin-top: 80px;
-    margin-left: 150px;
-    width: 80%;
-    height: 85%;
+.homeContainer{
+
+    background-color: rgb(235, 235, 243);
+  
 }

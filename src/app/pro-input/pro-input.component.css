@@ -1,0 +1,16 @@
+.contentDiv{
+    position: fixed;
+    background-color: rgb(235, 235, 243);
+    margin-top: 80px;
+    margin-left: 210px;
+    width: 80%;
+    height: 85%;
+}
+.subcont{
+    padding-top: 5%;
+    padding-left: 10%;
+}
+.formContainer{
+    padding-top: 80px;
+    padding-left: 0px;
+}

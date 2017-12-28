@@ -6,6 +6,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Routes,RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { ProInputComponent } from './pro-input/pro-input.component';
 const routeConfig: Routes =[
    {path:'', component:HomeComponent}
  ]
@@ -15,9 +16,11 @@ const routeConfig: Routes =[
     AppComponent,
     HeaderComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    ProInputComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(routeConfig),
     ReactiveFormsModule
