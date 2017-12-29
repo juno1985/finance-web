@@ -10,6 +10,8 @@ import { ProInputComponent } from './pro-input/pro-input.component';
 import { ItemService } from './shared/item.service';
 import {Http,HttpModule} from '@angular/http';
 import { HomeInputComponent } from './home-input/home-input.component';
+import { BootstrapModalModule } from 'ngx-bootstrap-modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
 const routeConfig: Routes =[
    {path:'', component:HomeComponent},
    {path:'input',component:HomeInputComponent}
@@ -22,14 +24,17 @@ const routeConfig: Routes =[
     NavBarComponent,
     HomeComponent,
     ProInputComponent,
-    HomeInputComponent
+    HomeInputComponent,
+    
   ],
   imports: [
     FormsModule,
     HttpModule,
     BrowserModule,
     RouterModule.forRoot(routeConfig),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BootstrapModalModule,
+    ModalModule.forRoot()
   ],
   //要注入的service必须在这里声明
   providers: [ItemService],

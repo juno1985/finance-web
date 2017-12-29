@@ -1,3 +1,4 @@
+
 import { ItemService,InputItem,PropertyItem,InputFlow } from './../shared/item.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
@@ -16,15 +17,15 @@ export class ProInputComponent implements OnInit {
   propertyList: PropertyItem[];
   inputFlow:InputFlow;
 
-  constructor(private itemService:ItemService) { 
-    let fb = new FormBuilder();
-    this.formModel=fb.group({
-      fromItem:['',Validators.required],
-      //默认空，验证是否是正数
-      tranAccount:[null,this.positiveNumberValidator],
-      toItem:['',Validators.required],
-      shortComment:['']
-    });
+  constructor(private itemService:ItemService ) { 
+              let fb = new FormBuilder();
+              this.formModel=fb.group({
+                fromItem:['',Validators.required],
+                //默认空，验证是否是正数
+                tranAccount:[null,this.positiveNumberValidator],
+                toItem:['',Validators.required],
+                shortComment:['']
+              });
   }
 
   ngOnInit() {
