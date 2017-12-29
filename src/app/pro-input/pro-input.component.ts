@@ -55,7 +55,8 @@ export class ProInputComponent implements OnInit {
        
      //表单全部验证过才能提交
      if(this.formModel.valid){
-      console.log(this.formModel.value);
+      // console.log(this.formModel.value);
+      this.itemService.postInputFlow(this.formModel.value);
      }
   }
 

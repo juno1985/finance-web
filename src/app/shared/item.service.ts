@@ -15,6 +15,11 @@ export class ItemService {
     return this.http.get("/finance-api/getInputFlow").map(res=>res.json());
   }
 
+  postInputFlow(inputPost:InputPost){
+    // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
+    return this.http.post('/finance-api/postInputFlow',inputPost).subscribe();
+  }
+
 }
 
 export class InputItem{
@@ -38,5 +43,13 @@ export class InputFlow{
   constructor(
     public fromList:InputItem[],
     public toList:PropertyItem[]
+  ){}
+}
+
+export class InputPost{
+  constructor(
+    public fromItem:string,
+    public toItem:string,
+    public tranAccount:number
   ){}
 }
