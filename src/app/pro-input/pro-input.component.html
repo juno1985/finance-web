@@ -1,4 +1,4 @@
-<form [formGroup]="formModel"  (ngSubmit)="onSearch()" novalidate>
+<form [formGroup]="formModel"  (ngSubmit)="onSubmit()" novalidate>
     <table class="table">
       <caption>收入流录入</caption>
       <thead>
@@ -12,10 +12,17 @@
        <tbody>
         <tr>
           <td>
-            <div class="form-group">
-              <select id="fromItem" class="form-control">
+            <!-- 注意这里formModel.hasError和formModel.get('fromItem').valid总是相反 -->
+            <!--验证有错误并且控件被touched了,则显示红框-->
+            <div class="form-group" 
+                [class.has-error]="formModel.hasError('required','fromItem') && formModel.get('fromItem').touched">
+              <select formControlName="fromItem" id="fromItem" class="form-control">
                 <option *ngFor="let inputItem of inputList" [value]="inputItem.itemName">{{inputItem.itemName}}</option>
               </select>
+             <!--验证无错误或者控件untouched转台,则隐藏错误提示-->
+              <div [hidden]="formModel.get('fromItem').valid || formModel.get('fromItem').untouched">
+                <span class="help-bock" [class.hidden]="!formModel.hasError('required','fromItem')">收入来源不能为空</span>
+              </div>
             </div>
           </td>
           <td>
@@ -25,11 +32,14 @@
             </div>
           </td>
           <td>
-            <div class="form-group">
-              <select id="toItem" class="form-control">
+            <div class="form-group" [class.has-error]="formModel.hasError('required','toItem') && formModel.get('toItem').touched">
+              <select formControlName="toItem" id="toItem" class="form-control">
                 <option *ngFor="let propItem of propertyList" [value]="propItem.itemName">{{propItem.itemName}}</option>
               </select>
-              </div>
+              <div [hidden]="formModel.get('toItem').valid || formModel.get('toItem').untouched">
+                  <span class="help-bock" [class.hidden]="!formModel.hasError('required','toItem')">转入账户不能为空</span>
+                </div>
+            </div>
           </td>
           <td>
             <div class="form-group">

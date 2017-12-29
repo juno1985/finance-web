@@ -1,6 +1,6 @@
 import { ItemService,InputItem,PropertyItem,InputFlow } from './../shared/item.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,FormControl } from '@angular/forms';
+import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
 
 
 @Component({
@@ -19,8 +19,10 @@ export class ProInputComponent implements OnInit {
   constructor(private itemService:ItemService) { 
     let fb = new FormBuilder();
     this.formModel=fb.group({
+      fromItem:['',Validators.required],
       //默认空，验证是否是正数
-      tranAccount:[null,this.positiveNumberValidator]
+      tranAccount:[null,this.positiveNumberValidator],
+      toItem:['',Validators.required]
     });
   }
 
@@ -44,16 +46,17 @@ export class ProInputComponent implements OnInit {
 
     
     if(amcct>0){
-        return null;}
+        return null;} 
     else
       { return {positiveNum:true};}
   }
 
-  onSearch(){
+  onSubmit(){
        
      //表单全部验证过才能提交
      if(this.formModel.valid){
       console.log(this.formModel.value);
      }
   }
+
 }
