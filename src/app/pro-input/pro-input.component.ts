@@ -22,7 +22,8 @@ export class ProInputComponent implements OnInit {
       fromItem:['',Validators.required],
       //默认空，验证是否是正数
       tranAccount:[null,this.positiveNumberValidator],
-      toItem:['',Validators.required]
+      toItem:['',Validators.required],
+      shortComment:['']
     });
   }
 

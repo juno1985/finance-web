@@ -6,12 +6,13 @@
           <th>收入来源</th>
           <th>转账金额</th>
           <th>目的账户</th>
-          <th>目的账户</th>
+          <th>简短备注</th>
+          <th>提交</th>
         </tr>
       </thead>
        <tbody>
         <tr>
-          <td>
+          <td style="width:15%;">
             <!-- 注意这里formModel.hasError和formModel.get('fromItem').valid总是相反 -->
             <!--验证有错误并且控件被touched了,则显示红框-->
             <div class="form-group" 
@@ -25,13 +26,13 @@
               </div>
             </div>
           </td>
-          <td>
+          <td style="width:15%;">
             <div class="form-group" [class.has-error]="formModel.hasError('positiveNum','tranAccount')">
-              <input formControlName="tranAccount" type="number" id="tranAccount" placeholder="输入金额..." class="form-control">
+              <input formControlName="tranAccount" type="number" id="tranAccount" placeholder="输入金额..." class="form-control" >
               <span class="help-bock" [class.hidden]="!formModel.hasError('positiveNum','tranAccount')">请输入正数!</span>
             </div>
           </td>
-          <td>
+          <td style="width:15%;">
             <div class="form-group" [class.has-error]="formModel.hasError('required','toItem') && formModel.get('toItem').touched">
               <select formControlName="toItem" id="toItem" class="form-control">
                 <option *ngFor="let propItem of propertyList" [value]="propItem.itemName">{{propItem.itemName}}</option>
@@ -39,6 +40,11 @@
               <div [hidden]="formModel.get('toItem').valid || formModel.get('toItem').untouched">
                   <span class="help-bock" [class.hidden]="!formModel.hasError('required','toItem')">转入账户不能为空</span>
                 </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <input type="text" id="shortComment" formControlName="shortComment" class="form-control" >
             </div>
           </td>
           <td>
