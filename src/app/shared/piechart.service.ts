@@ -35,15 +35,16 @@ export class xAxis{
 }
 
 export class PieChart{
-   public title:any;
-  // public tooltip:any;
-  // public toolbox:any;
-  // public grid:any;
-  // public yAxis:any;
+   
   constructor(
     public legend:Legend,
     public series:Series[],
-    public xAxis:xAxis[]
+    public xAxis:xAxis[],
+    public title:any,
+    public tooltip:any,
+    public toolbox:any,
+    public grid:any,
+    public yAxis:any
    
   ){
 

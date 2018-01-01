@@ -9,11 +9,8 @@ import { NgxEchartsModule  } from 'ngx-echarts';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   showloading:boolean = true;
-
   lineChart:PieChart;
-
   constructor(private pieChartService:PiechartService) { 
 
     this.pieChartService.getPieChart().subscribe(
