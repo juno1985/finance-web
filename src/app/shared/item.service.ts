@@ -20,7 +20,7 @@ export class ItemService {
     return this.http.post('/finance-api/postInputFlow',inputPost).subscribe(
       res=>{
         //.json()函数会将string转化为object
-        console.log("得到的状态码: " + res.json().mesg);
+        // console.log("得到的状态码: " + res.json().mesg);
         this.dialogService.show(<BuiltInOptions>{
           content: '保存成功',
           icon: 'success',

@@ -12,6 +12,8 @@ import {Http,HttpModule} from '@angular/http';
 import { HomeInputComponent } from './home-input/home-input.component';
 import { BootstrapModalModule } from 'ngx-bootstrap-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxEchartsModule  } from 'ngx-echarts';
+import { PiechartService } from './shared/piechart.service';
 const routeConfig: Routes =[
    {path:'', component:HomeComponent},
    {path:'input',component:HomeInputComponent}
@@ -34,10 +36,11 @@ const routeConfig: Routes =[
     RouterModule.forRoot(routeConfig),
     ReactiveFormsModule,
     BootstrapModalModule,
+    NgxEchartsModule ,
     ModalModule.forRoot()
   ],
   //要注入的service必须在这里声明
-  providers: [ItemService],
+  providers: [ItemService,PiechartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
