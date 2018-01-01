@@ -62,8 +62,8 @@ export class InputFlow{
 
 export class InputPost{
   constructor(
-    public fromItem:string,
-    public toItem:string,
+    public fromItem:number,
+    public toItem:number,
     public tranAccount:number,
     public shortComment:string
   ){}
