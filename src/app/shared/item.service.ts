@@ -19,6 +19,10 @@ export class ItemService {
     return this.http.get("/finance-api/getOutputFlow").map(res=>res.json());
   }
 
+  getPropReorgFlow():Observable<OutFlow>{
+    return this.http.get("/finance-api/PropReorgFlow").map(res=>res.json());
+  }
+
   postInputFlow(inputPost:InputPost){
     // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
     return this.http.post('/finance-api/postInputFlow',inputPost).subscribe(
@@ -30,7 +34,7 @@ export class ItemService {
           content: res.json().mesg,
           icon: 'success',
           size: 'sm',
-          timeout: 1000,
+          timeout: 1500,
           showCancelButton: false,
           showCloseButton:false,
           showConfirmButton:false
@@ -49,7 +53,26 @@ export class ItemService {
           content: res.json().mesg,
           icon: 'success',
           size: 'sm',
-          timeout: 1000,
+          timeout: 1500,
+          showCancelButton: false,
+          showCloseButton:false,
+          showConfirmButton:false
+      });
+      }
+    );
+  }
+
+  postPropReorgFlow(inputPost:InputPost){
+    // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
+    return this.http.post('/finance-api/postPropReorgFlow',inputPost).subscribe(
+      res=>{
+        //.json()函数会将string转化为object
+        // console.log("得到的状态码: " + res.json().mesg);
+        this.dialogService.show(<BuiltInOptions>{
+          content: res.json().mesg,
+          icon: 'success',
+          size: 'sm',
+          timeout: 1500,
           showCancelButton: false,
           showCloseButton:false,
           showConfirmButton:false
