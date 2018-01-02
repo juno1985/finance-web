@@ -1,5 +1,17 @@
 <div class="homeContainer">
-<p>
-  pro-table works!
-</p>
+    <table class="table table-striped">
+        <caption><h4>资产表</h4></caption>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>余额</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prop of props | async">
+            <td>{{prop.itemName}}</td>
+            <td>{{prop.itemBalance}}</td>
+           </tr>
+        </tbody>
+      </table>
 </div>

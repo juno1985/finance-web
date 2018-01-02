@@ -23,6 +23,10 @@ export class ItemService {
     return this.http.get("/finance-api/PropReorgFlow").map(res=>res.json());
   }
 
+  getProp():Observable<PropertyItem[]>{
+    return this.http.get("/finance-api/prodatas").map(res=>res.json());
+  }
+
   postInputFlow(inputPost:InputPost){
     // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
     return this.http.post('/finance-api/postInputFlow',inputPost).subscribe(
