@@ -1,0 +1,58 @@
+<form [formGroup]="formModel"  (ngSubmit)="onSubmit()" novalidate>
+  <table class="table">
+    <caption>支出流录入</caption>
+    <thead>
+      <tr>
+        <th>支出账户</th>
+        <th>支出金额</th>
+        <th>支出类别</th>
+        <th>简短备注</th>
+        <th>提交</th>
+      </tr>
+    </thead>
+     <tbody>
+      <tr>
+        <td style="width:15%;">
+          <!-- 注意这里formModel.hasError和formModel.get('fromItem').valid总是相反 -->
+          <!--验证有错误并且控件被touched了,则显示红框-->
+          <div class="form-group" 
+              [class.has-error]="formModel.hasError('required','fromItem') && formModel.get('fromItem').touched">
+            <select formControlName="fromItem" id="fromItem" class="form-control">
+              <option *ngFor="let inputItem of propertyList" [value]="inputItem.id">{{inputItem.itemName}}</option>
+            </select>
+           <!--验证无错误或者控件untouched转台,则隐藏错误提示-->
+            <div [hidden]="formModel.get('fromItem').valid || formModel.get('fromItem').untouched">
+              <span class="help-bock" [class.hidden]="!formModel.hasError('required','fromItem')">支出账户不能为空</span>
+            </div>
+          </div>
+        </td>
+        <td style="width:15%;">
+          <div class="form-group" [class.has-error]="formModel.hasError('positiveNum','tranAccount')">
+            <input formControlName="tranAccount" type="number" id="tranAccount" placeholder="输入金额..." class="form-control" >
+            <span class="help-bock" [class.hidden]="!formModel.hasError('positiveNum','tranAccount')">请输入正数!</span>
+          </div>
+        </td>
+        <td style="width:15%;">
+          <div class="form-group" [class.has-error]="formModel.hasError('required','toItem') && formModel.get('toItem').touched">
+            <select formControlName="toItem" id="toItem" class="form-control">
+              <option *ngFor="let propItem of outputList" [value]="propItem.id">{{propItem.itemName}}</option>
+            </select>
+            <div [hidden]="formModel.get('toItem').valid || formModel.get('toItem').untouched">
+                <span class="help-bock" [class.hidden]="!formModel.hasError('required','toItem')">支出类别不能为空</span>
+              </div>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <input type="text" id="shortComment" formControlName="shortComment" class="form-control" >
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default btn-block">提交</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

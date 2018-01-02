@@ -2,9 +2,13 @@
  <div class="collapse navbar-collapse navbar-toggleable-sm navbar-ex1-collapse">
   <ul class="nav navbar-nav side-nav list-group">
         <li class="list-group-item">
-            <a [routerLink]="['/']">
-                <i class="fa fa-fw fa-file"></i>财务报表</a>
+                <a [routerLink]="['/']">
+                    <i class="fa fa-fw fa-file"></i>月度报表</a>
             </li>
+        <li class="list-group-item">
+            <a [routerLink]="['/stat']">
+                <i class="fa fa-fw fa-file"></i>账户数据</a>
+        </li>
       <li class="list-group-item">
           <a href="javascript:;" data-toggle="collapse" data-target="#demo" 
           class="" aria-expanded="true">
@@ -13,14 +17,14 @@
           </i> 财务变更 <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo" class="list-group collapse in" aria-expanded="true">
               <li class="list-group-item">
-                  <a [routerLink]="['./input']">财务收入</a>
+                  <a [routerLink]="['./input/propinput']">财务收入</a>
               </li>
               <li class="list-group-item">
-                  <a href="javascript:;">财务支出</a>
+                  <a [routerLink]="['./input/propoutput']">财务支出</a>
               </li>
               <li class="list-group-item">
-                <a href="javascript:;">财务重组</a>
-            </li>
+                <a [routerLink]="['./input/propreorg']">财务重组</a>
+              </li>
           </ul>
       </li>
     

@@ -15,6 +15,10 @@ export class ItemService {
     return this.http.get("/finance-api/getInputFlow").map(res=>res.json());
   }
 
+  getOutPutFlow():Observable<OutFlow>{
+    return this.http.get("/finance-api/getOutputFlow").map(res=>res.json());
+  }
+
   postInputFlow(inputPost:InputPost){
     // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
     return this.http.post('/finance-api/postInputFlow',inputPost).subscribe(
@@ -22,7 +26,27 @@ export class ItemService {
         //.json()函数会将string转化为object
         // console.log("得到的状态码: " + res.json().mesg);
         this.dialogService.show(<BuiltInOptions>{
-          content: '保存成功',
+          //直接读取服务器端返回的AjaxModel.mesg,并回显弹出成功框
+          content: res.json().mesg,
+          icon: 'success',
+          size: 'sm',
+          timeout: 1000,
+          showCancelButton: false,
+          showCloseButton:false,
+          showConfirmButton:false
+      });
+      }
+    );
+  }
+
+  postOutputFlow(inputPost:InputPost){
+    // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
+    return this.http.post('/finance-api/postOutputFlow',inputPost).subscribe(
+      res=>{
+        //.json()函数会将string转化为object
+        // console.log("得到的状态码: " + res.json().mesg);
+        this.dialogService.show(<BuiltInOptions>{
+          content: res.json().mesg,
           icon: 'success',
           size: 'sm',
           timeout: 1000,
@@ -56,6 +80,13 @@ export class PropertyItem{
 export class InputFlow{
   constructor(
     public fromList:InputItem[],
+    public toList:PropertyItem[]
+  ){}
+}
+
+export class OutFlow{
+  constructor(
+    public fromList:PropertyItem[],
     public toList:PropertyItem[]
   ){}
 }

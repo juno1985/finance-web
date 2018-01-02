@@ -14,9 +14,17 @@ import { BootstrapModalModule } from 'ngx-bootstrap-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxEchartsModule  } from 'ngx-echarts';
 import { PiechartService } from './shared/piechart.service';
+import { ProOutputComponent } from './pro-output/pro-output.component';
+import { ProReorganizeComponent } from './pro-reorganize/pro-reorganize.component';
+import { ProTableComponent } from './pro-table/pro-table.component';
 const routeConfig: Routes =[
    {path:'', component:HomeComponent},
-   {path:'input',component:HomeInputComponent}
+   {path:'stat',component:ProTableComponent},
+   {path:'input',component:HomeInputComponent,children:[
+     {path:'propinput',component:ProInputComponent},
+     {path:'propoutput',component:ProOutputComponent},
+     {path:'propreorg',component:ProReorganizeComponent}
+   ]}
  ]
 
 @NgModule({
@@ -27,6 +35,9 @@ const routeConfig: Routes =[
     HomeComponent,
     ProInputComponent,
     HomeInputComponent,
+    ProOutputComponent,
+    ProReorganizeComponent,
+    ProTableComponent,
     
   ],
   imports: [
