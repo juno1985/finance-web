@@ -10,8 +10,12 @@
         <tbody>
           <tr *ngFor="let prop of props | async">
             <td>{{prop.itemName}}</td>
-            <td>{{prop.itemBalance}}</td>
+            <td>{{prop.itemBalance}}元</td>
            </tr>
         </tbody>
+        <tfoot align="right">
+          <td></td>
+          <td><h4>合计:{{propTotal|async}}元&nbsp;&nbsp;</h4></td>
+        </tfoot>
       </table>
 </div>

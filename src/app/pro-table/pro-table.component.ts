@@ -9,11 +9,13 @@ import 'rxjs/Rx';
 })
 export class ProTableComponent implements OnInit {
 
-  private props:Observable<PropertyItem[]>
+  private props:Observable<PropertyItem[]>;
+  private propTotal:Observable<number>;
   constructor(private itemService:ItemService) { }
 
   ngOnInit() {
     this.props=this.itemService.getProp();
+    this.propTotal=this.itemService.getPropTotal();
   }
 
 }
