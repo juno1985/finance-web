@@ -31,6 +31,11 @@ export class ItemService {
     return this.http.get("/finance-api/getTotal").map(res=>res.json());
   }
 
+  getHistData(id:number):Observable<PagerHist>
+  {
+    return this.http.get("/finance-api/hist/"+id).map(res=>res.json());
+  }
+
   postInputFlow(inputPost:InputPost){
     // console.log("得到: "+ inputPost.fromItem + ' ' +inputPost.toItem + ' '+inputPost.tranAccount);
     return this.http.post('/finance-api/postInputFlow',inputPost).subscribe(
@@ -128,5 +133,21 @@ export class InputPost{
     public toItem:number,
     public tranAccount:number,
     public shortComment:string
+  ){}
+}
+export class HistData{
+  constructor(
+    public chgAmmount:number,
+    public chgComment:string,
+    public chgTime:Date,
+    public fromItem:string,
+    public toItem:string
+  ){}
+}
+export class PagerHist{
+  constructor(
+    public datas:HistData[],
+    public currentPage:number,
+    public totalPage:number
   ){}
 }

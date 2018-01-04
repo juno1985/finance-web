@@ -17,9 +17,13 @@ import { PiechartService } from './shared/piechart.service';
 import { ProOutputComponent } from './pro-output/pro-output.component';
 import { ProReorganizeComponent } from './pro-reorganize/pro-reorganize.component';
 import { ProTableComponent } from './pro-table/pro-table.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HistPagerComponent } from './hist-pager/hist-pager.component';
+
 const routeConfig: Routes =[
    {path:'', component:HomeComponent},
    {path:'stat',component:ProTableComponent},
+   {path:'history',component:HistPagerComponent},
    {path:'input',component:HomeInputComponent,children:[
      {path:'propinput',component:ProInputComponent},
      {path:'propoutput',component:ProOutputComponent},
@@ -38,6 +42,7 @@ const routeConfig: Routes =[
     ProOutputComponent,
     ProReorganizeComponent,
     ProTableComponent,
+    HistPagerComponent,
     
   ],
   imports: [
@@ -51,7 +56,9 @@ const routeConfig: Routes =[
     ModalModule.forRoot()
   ],
   //要注入的service必须在这里声明
-  providers: [ItemService,PiechartService],
+  //加入锚点
+  providers: [ItemService,PiechartService,
+    {provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

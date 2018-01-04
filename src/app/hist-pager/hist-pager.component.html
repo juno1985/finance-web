@@ -1,0 +1,67 @@
+<div class="homeContainer">
+<table class="table table-striped">
+
+    <caption><h4>历史查询</h4></caption>
+    
+    <tbody>
+      <tr *ngFor="let hist of histData">
+        <td style="width:15%">{{hist?.chgTime|date:'yyyy-MM-dd hh:mm:ss'}}</td>
+        <td style="width:10%">{{hist?.fromItem}}</td>
+        <td style="width:5%"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
+        <td style="width:10%">{{hist?.toItem}}</td>
+        <td style="width:8%">{{hist?.chgAmmount}}元</td>
+        <td>{{hist?.chgComment}}</td>
+       </tr>
+    </tbody>
+    <tfoot align="center">
+    <td colspan="6">
+
+
+
+<ul class="pagination">
+  <li>
+      <a (click)="changePage(0)">首页</a>
+  </li>
+  <li [class.disabled]="currentPage < 1">
+      <a (click)="goPrevious(currentPage)">上一页</a>
+  </li>
+  <li class="disabled" *ngIf="currentPage > 3">
+      <a>...</a>
+  </li>
+  <li *ngIf="currentPage >= 3">
+      <a (click)="changePage(currentPage-3)">{{currentPage-2}}</a>
+  </li>
+  <li *ngIf="currentPage >= 2">
+      <a (click)="changePage(currentPage-2)">{{currentPage-1}}</a>
+  </li>
+  <li *ngIf="currentPage >= 1">
+      <a (click)="changePage(currentPage-1)">{{currentPage}}</a>
+  </li>
+  <li class="active">
+      <a (click)="changePage(currentPage)">{{currentPage+1}}</a>
+  </li>
+  <li *ngIf="currentPage <= totalPage-2">
+      <a (click)="changePage(currentPage+1)">{{currentPage+2}}</a>
+  </li>
+  <li *ngIf="currentPage <= totalPage-3">
+      <a (click)="changePage(currentPage+2)">{{currentPage+3}}</a>
+  </li>
+  <li *ngIf="currentPage <= totalPage-4">
+      <a (click)="changePage(currentPage+3)">{{currentPage+4}}</a>
+  </li>
+  <li class="disabled" *ngIf="currentPage < totalPage-4">
+      <a>...</a>
+  </li>
+  <li [class.disabled]="currentPage > totalPage-2">
+      <a (click)="goNext(currentPage)">下一页</a>
+  </li>
+  <li>
+      <a (click)="changePage(totalPage-1)">尾页</a>
+  </li>
+</ul>
+</td>
+</tfoot>
+  
+
+</table>
+</div>
