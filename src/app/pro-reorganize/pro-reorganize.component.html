@@ -38,7 +38,7 @@
           <td style="width:15%;">
             <div class="form-group" [class.has-error]="formModel.hasError('required','toItem') && formModel.get('toItem').touched">
               <select formControlName="toItem" id="toItem" class="form-control" >
-                <option *ngFor="let propItem of obOut.fromList|propFilter:itemId" [value]="propItem.id">{{propItem.itemName}}</option>
+                <option *ngFor="let propItem of obOut?.fromList|propFilter:itemId" [value]="propItem.id">{{propItem.itemName}}</option>
               </select>
               <div [hidden]="formModel.get('toItem').valid || formModel.get('toItem').untouched">
                   <span class="help-bock" [class.hidden]="!formModel.hasError('required','toItem')">目的账户不能为空</span>
