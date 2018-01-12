@@ -19,6 +19,7 @@ export class ItemService {
     return this.http.get("/finance-api/getOutputFlow").map(res=>res.json());
   }
 
+  //后台传过来toList=null
   getPropReorgFlow():Observable<OutFlow>{
     return this.http.get("/finance-api/PropReorgFlow").map(res=>res.json());
   }
@@ -29,6 +30,24 @@ export class ItemService {
 
   getPropTotal():Observable<number>{
     return this.http.get("/finance-api/getTotal").map(res=>res.json());
+  }
+
+  sendMail(){
+    return this.http.get("/finance-api/sendMail").map(res=>res.json()).subscribe(
+      res=>{
+        //.json()函数会将string转化为object
+        // console.log("得到的状态码: " + res.json().mesg);
+        this.dialogService.show(<BuiltInOptions>{
+          content: res.mesg,
+          icon: 'success',
+          size: 'sm',
+          timeout: 1500,
+          showCancelButton: false,
+          showCloseButton:false,
+          showConfirmButton:false
+      });
+      }
+    );
   }
 
   getHistData(id:number):Observable<PagerHist>

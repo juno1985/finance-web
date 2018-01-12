@@ -18,4 +18,7 @@ export class ProTableComponent implements OnInit {
     this.propTotal=this.itemService.getPropTotal();
   }
 
+  sendMail(){
+    this.itemService.sendMail();
+  }
 }

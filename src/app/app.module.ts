@@ -19,6 +19,7 @@ import { ProReorganizeComponent } from './pro-reorganize/pro-reorganize.componen
 import { ProTableComponent } from './pro-table/pro-table.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HistPagerComponent } from './hist-pager/hist-pager.component';
+import { PropFilterPipe } from './pipe/prop-filter.pipe';
 
 const routeConfig: Routes =[
    {path:'', component:HomeComponent},
@@ -43,6 +44,7 @@ const routeConfig: Routes =[
     ProReorganizeComponent,
     ProTableComponent,
     HistPagerComponent,
+    PropFilterPipe,
     
   ],
   imports: [
